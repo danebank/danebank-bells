@@ -1,0 +1,33 @@
+<html>
+<header><title>Junior Bells Website</title></header>
+<body>
+<table style="margin: 0px auto;" cellpadding="50"><tbody><tr><td>
+<table style="margin: 0px auto; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" width=250px height=250px>
+<tbody>
+	<tr>
+		<form id="evacOn" action="/evac" method="POST">
+		<td onclick="document.getElementById('evacOn').submit();" style="cursor:hand; text-align: center; vertical-align: middle; background-color: #F8F9F9;">
+			Click to play<br>Evac Sound
+		</td>
+		</form>
+		<form id="evacOff" action="/" method="POST">
+		<td onclick="document.getElementById('evacOff').submit();" style="cursor:hand; text-align: center; vertical-align: middle; background-color: #E8F6F3;">
+			Click to stop<br>Evac Sound
+		</td>
+		</form>
+	</tr>
+	<tr>
+		<form id="otherOn" action="/other" method="POST">
+		<td onclick="document.getElementById('otherOn').submit();" style="cursor:hand; text-align: center; vertical-align: middle; background-color: #E8F6F3;">
+			Click to play<br>Other Sound
+		</td>
+		</form>
+		<form id="otherOff" action="/otherOff" method="POST">
+		<td onclick="document.getElementById('otherOff').submit();" style="cursor:hand; text-align: center; vertical-align: middle; background-color: #F8F9F9;">
+			Click to stop<br>Other Sound
+		</td>
+		</form>
+	</tr>
+</body>
+</td></tr></tbody><table>
+</html>
