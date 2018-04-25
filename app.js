@@ -6,7 +6,7 @@ const schedule = require('node-schedule');
 const app = express();
 const loopSeconds = 20;
 const port = '3000';
-var player = require('play-sound')(opts = {});
+var player = require('play-sound')({player: "C:\\Program Files (x86)\\MPlayer for Windows\\mplayer.exe"});
 var evacSound;
 var evacOn = false;
 var sched = [];
@@ -68,7 +68,7 @@ function mainLoop() {
 }
 
 function soundEvac() {
-	evacSound = player.play('./resources/evac.mp3', { timeout: 300 }, function(err){
+	evacSound = player.play('C:\\Users\\Administrator.WKS0308\\Desktop\\Bells\\danebank-bells\\resources\\evac.mp3', { timeout: 300 }, function(err){
   			if (err && !err.killed) throw err
 	});
 }
