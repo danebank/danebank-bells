@@ -12,17 +12,17 @@ var evacOn = false;
 var sched = [];
 
 var bells = [
-	['50 8 * * 1-5','./resources/sound.mp3'],
-	['10 9 * * 1-5', './resources/mbeernut.mp3'],
-	['50 9 * * 1-5', './resources/sound.mp3'],
-	['30 10 * * 1-5', './resources/mbeernut.mp3'],
-	['50 10 * * 1-5', './resources/sound.mp3'],
-	['30 11 * * 1-5', './resources/mbeernut.mp3'],
-	['10 12 * * 1-5', './resources/sound.mp3'],
-	['50 12 * * 1-5', './resources/mbeernut.mp3'],
-	['50 13 * * 1-5', './resources/sound.mp3'],
-	['30 14 * * 1-5', './resources/mbeernut.mp3'],
-	['15 15 * * 1-5', './resources/sound.mp3']
+	['50 8 * * 1-5','.\\resources\\Bell1.mp3'],
+	['10 9 * * 1-5','.\\resources\\BellDefault.mp3'],
+	['50 9 * * 1-5','.\\resources\\BellDefault.mp3'],
+	['30 10 * * 1-5','.\\resources\\Bell4.mp3'],
+	['50 10 * * 1-5','.\\resources\\Bell5.mp3'],
+	['30 11 * * 1-5','.\\resources\\BellDefault.mp3'],
+	['10 12 * * 1-5','.\\resources\\BellDefault.mp3'],
+	['50 12 * * 1-5','.\\resources\\Bell8.mp3'],
+	['50 13 * * 1-5','.\\resources\\Bell9.mp3'],
+	['30 14 * * 1-5','.\\resources\\BellDefault.mp3'],
+	['15 15 * * 1-5','.\\resources\\Bell11.mp3']
 ];
 
 
@@ -54,12 +54,20 @@ app.post('/evac', function(req, res) {
 app.post('/', function(req, res) {
 	evacOn = false;
 	res.sendFile(__dirname + '/index.html');
-	evacSound.kill();
+	// catch a page refresh where evac sound isn't yet defined
+	try { 
+		evacSound.kill();
+	} catch (err) {
+		console.log(err);
+	}
 });
 
 // port listener
 app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
+  	console.log(`Server is listening on port ${port}`);
+	console.log(``);
+	console.log(`Open desktop shortcut to access evac sounds.`);
+	console.log(`Junior Bells Schedule is running...`);
 });
 
 function mainLoop() {
@@ -68,7 +76,7 @@ function mainLoop() {
 }
 
 function soundEvac() {
-	evacSound = player.play('C:\\Users\\Administrator.WKS0308\\Desktop\\Bells\\danebank-bells\\resources\\evac.mp3', { timeout: 300 }, function(err){
+	evacSound = player.play('.\\resources\\evac.mp3', { timeout: 300 }, function(err){
   			if (err && !err.killed) throw err
 	});
 }
