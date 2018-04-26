@@ -5,24 +5,24 @@ const schedule = require('node-schedule');
 // initialise app
 const app = express();
 const loopSeconds = 20;
-const port = '3000';
+const port = '80';
 var player = require('play-sound')({player: "C:\\Program Files (x86)\\MPlayer for Windows\\mplayer.exe"});
 var evacSound;
 var evacOn = false;
 var sched = [];
 
 var bells = [
-	['50 8 * * 1-5','.\\resources\\Bell1.mp3'],
+	['50 8 * * 1-5','.\\resources\\Bell1.wav'],
 	['10 9 * * 1-5','.\\resources\\BellDefault.mp3'],
 	['50 9 * * 1-5','.\\resources\\BellDefault.mp3'],
-	['30 10 * * 1-5','.\\resources\\Bell4.mp3'],
-	['50 10 * * 1-5','.\\resources\\Bell5.mp3'],
+	['30 10 * * 1-5','.\\resources\\Bell4.wav'],
+	['50 10 * * 1-5','.\\resources\\Bell5.wav'],
 	['30 11 * * 1-5','.\\resources\\BellDefault.mp3'],
 	['10 12 * * 1-5','.\\resources\\BellDefault.mp3'],
-	['50 12 * * 1-5','.\\resources\\Bell8.mp3'],
-	['50 13 * * 1-5','.\\resources\\Bell9.mp3'],
+	['50 12 * * 1-5','.\\resources\\Bell8.wav'],
+	['45 14 * * 1-5','.\\resources\\Bell9.wav'],
 	['30 14 * * 1-5','.\\resources\\BellDefault.mp3'],
-	['15 15 * * 1-5','.\\resources\\Bell11.mp3']
+	['15 15 * * 1-5','.\\resources\\Bell11.wav']
 ];
 
 
@@ -64,7 +64,7 @@ app.post('/', function(req, res) {
 
 // port listener
 app.listen(port, () => {
-  	console.log(`Server is listening on port ${port}`);
+  	console.log(`Server is listening on jnrbells.danebank.nsw.edu.au:${port}`);
 	console.log(``);
 	console.log(`Open desktop shortcut to access evac sounds.`);
 	console.log(`Junior Bells Schedule is running...`);
@@ -77,7 +77,7 @@ function mainLoop() {
 
 function soundEvac() {
 	evacSound = player.play('.\\resources\\evac.mp3', { timeout: 300 }, function(err){
-  			if (err && !err.killed) throw err
+  		if (err && !err.killed) throw err
 	});
 }
 
