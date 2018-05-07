@@ -20,9 +20,10 @@ var bells = [
 	['30 11 * * 1-5','.\\resources\\BellDefault.mp3'],
 	['10 12 * * 1-5','.\\resources\\BellDefault.mp3'],
 	['50 12 * * 1-5','.\\resources\\Bell8.wav'],
-	['45 14 * * 1-5','.\\resources\\Bell9.wav'],
+	['50 13 * * 1-5','.\\resources\\Bell9.wav'],
 	['30 14 * * 1-5','.\\resources\\BellDefault.mp3'],
-	['15 15 * * 1-5','.\\resources\\Bell11.wav']
+	['45 14 * * 5','.\\resources\\Bell11.wav'], // friday
+	['15 15 * * 1-4','.\\resources\\Bell11.wav'] // mon-thurs
 ];
 
 
@@ -37,6 +38,7 @@ sched = schedule.scheduleJob(bells[7][0], function(){ player.play(bells[7][1], {
 sched = schedule.scheduleJob(bells[8][0], function(){ player.play(bells[8][1], { timeout: 300 }, function(err){ if (err) throw err }) });
 sched = schedule.scheduleJob(bells[9][0], function(){ player.play(bells[9][1], { timeout: 300 }, function(err){ if (err) throw err }) });
 sched = schedule.scheduleJob(bells[10][0], function(){ player.play(bells[10][1], { timeout: 300 }, function(err){ if (err) throw err }) });
+sched = schedule.scheduleJob(bells[10][0], function(){ player.play(bells[11][1], { timeout: 300 }, function(err){ if (err) throw err }) });
 
 // main page
 app.get('/', function(req, res) {
