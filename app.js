@@ -38,7 +38,7 @@ sched = schedule.scheduleJob(bells[7][0], function(){ player.play(bells[7][1], {
 sched = schedule.scheduleJob(bells[8][0], function(){ player.play(bells[8][1], { timeout: 300 }, function(err){ if (err) throw err }) });
 sched = schedule.scheduleJob(bells[9][0], function(){ player.play(bells[9][1], { timeout: 300 }, function(err){ if (err) throw err }) });
 sched = schedule.scheduleJob(bells[10][0], function(){ player.play(bells[10][1], { timeout: 300 }, function(err){ if (err) throw err }) });
-sched = schedule.scheduleJob(bells[10][0], function(){ player.play(bells[11][1], { timeout: 300 }, function(err){ if (err) throw err }) });
+sched = schedule.scheduleJob(bells[11][0], function(){ player.play(bells[11][1], { timeout: 300 }, function(err){ if (err) throw err }) });
 
 // main page
 app.get('/', function(req, res) {
@@ -49,6 +49,13 @@ app.get('/', function(req, res) {
 app.post('/evac', function(req, res) {
 	evacOn = true;
 	soundEvac();
+	res.sendFile(__dirname + '/index.html');
+});
+
+// sound other form post
+app.post('/other', function(req, res) {
+	evacOn = true;
+	soundOther();
 	res.sendFile(__dirname + '/index.html');
 });
 
@@ -79,6 +86,12 @@ function mainLoop() {
 
 function soundEvac() {
 	evacSound = player.play('.\\resources\\evac.mp3', { timeout: 300 }, function(err){
+  		if (err && !err.killed) throw err
+	});
+}
+
+function soundOther() {
+	evacSound = player.play('.\\resources\\BellDefault.mp3', { timeout: 300 }, function(err){
   		if (err && !err.killed) throw err
 	});
 }
