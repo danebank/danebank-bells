@@ -13,7 +13,7 @@ var sched = [];
 
 var bells = [
 	['50 8 * * 1,3-5','.\\resources\\Bell1.wav'], // mon, wed-fri
-	['50 8 * * 2','.\\resources\\Bell1.wav'], // tues
+	['10 9 * * 2','.\\resources\\Bell1.wav'], // tues
 	['10 9 * * 1,3-5','.\\resources\\BellDefault.mp3'],
 	['50 9 * * 1-5','.\\resources\\BellDefault.mp3'],
 	['30 10 * * 1-5','.\\resources\\Bell4.wav'],
