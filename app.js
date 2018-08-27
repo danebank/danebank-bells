@@ -54,10 +54,17 @@ app.post('/evac', function(req, res) {
 	res.sendFile(__dirname + '/index.html');
 });
 
-// sound other form post
-app.post('/other', function(req, res) {
+// sound lockdown form post
+app.post('/lockdown', function(req, res) {
 	evacOn = true;
-	soundOther();
+	soundLockdown();
+	res.sendFile(__dirname + '/index.html');
+});
+
+// sound allclear form post
+app.post('/allclear', function(req, res) {
+	evacOn = true;
+	soundAllclear();
 	res.sendFile(__dirname + '/index.html');
 });
 
@@ -92,8 +99,14 @@ function soundEvac() {
 	});
 }
 
-function soundOther() {
-	evacSound = player.play('.\\resources\\BellDefault.mp3', { timeout: 300 }, function(err){
+function soundLockdown() {
+	evacSound = player.play('.\\resources\\lockdown.mp3', { timeout: 300 }, function(err){
+  		if (err && !err.killed) throw err
+	});
+}
+
+function soundAllclear() {
+	evacSound = player.play('.\\resources\\allclear.mp3', { timeout: 300 }, function(err){
   		if (err && !err.killed) throw err
 	});
 }
